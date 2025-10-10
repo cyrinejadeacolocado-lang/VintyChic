@@ -45,6 +45,11 @@
       </div>
 
       <aside class="card info">
+        <div id="selected-product" style="margin-bottom:1rem; text-align:center; display:none;">
+          <img id="selected-img" src="" alt="" style="max-width:100%; border-radius:12px; margin-bottom:8px;">
+          <h4 id="selected-name"></h4>
+          <p id="selected-price" class="price"></p>
+        </div>
         <h3>Other Ways to Contact</h3>
         <p><strong>Email:</strong> <a href="mailto:cyrinejadeacolocado@gmail.com">cyrinejadeacolocado@gmail.com</a></p>
         <p><strong>Facebook:</strong> <a href="https://www.facebook.com/cyrinejade05/" target="_blank">facebook.com/cyrinejade05</a></p>
@@ -82,6 +87,28 @@
   </div>
 
   <script>
+
+    // Get product info from URL
+    const params = new URLSearchParams(window.location.search);
+    const imgSrc = params.get("img");
+  
+    // Only show the image if provided
+    if (imgSrc) {
+      const aside = document.querySelector("aside.card.info");
+      
+      // Create image element
+      const imgContainer = document.createElement("div");
+      imgContainer.id = "selected-product";
+      imgContainer.style.marginBottom = "1rem";
+      imgContainer.style.textAlign = "center";
+      imgContainer.innerHTML = `
+        <img src="${imgSrc}" alt="Selected product" 
+             style="max-width:100%; border-radius:12px;">
+      `;
+  
+      // Insert image on top of the aside
+      aside.prepend(imgContainer);
+    }
     document.getElementById('year4').textContent = new Date().getFullYear();
 
     // Formspree endpoint (from you)
@@ -121,4 +148,5 @@
   </script>
 </body>
 </html>
+
 
