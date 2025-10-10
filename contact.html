@@ -1,0 +1,120 @@
+
+<!-- FILE: contact.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — VintyChic</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">VintyChic</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <h1>Contact & Order</h1>
+    <p class="lead">Use the form below to request an order. We'll receive your message at <em>cyrinejadeacolocado@gmail.com</em> and reply as soon as possible. You can also chat with us instantly on Messenger.</p>
+
+    <div class="grid contact-grid">
+      <div class="card">
+        <h3>Order Request Form</h3>
+        <form id="orderForm" class="form" >
+          <label>Full name <input type="text" name="name" required></label>
+          <label>Email <input type="email" name="email" required></label>
+          <label>Product name <input type="text" name="product" placeholder="e.g. Vintage Floral Dress" required></label>
+          <label>Quantity <input type="number" name="quantity" min="1" value="1" required></label>
+          <label>Message <textarea name="message" rows="3" placeholder="Any size or delivery notes"></textarea></label>
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Send Order</button>
+            <a class="btn ghost" href="https://m.me/cyrinejade05" target="_blank" rel="noopener">Message on Messenger</a>
+          </div>
+        </form>
+      </div>
+
+      <aside class="card info">
+        <h3>Other Ways to Contact</h3>
+        <p><strong>Email:</strong> <a href="mailto:cyrinejadeacolocado@gmail.com">cyrinejadeacolocado@gmail.com</a></p>
+        <p><strong>Facebook:</strong> <a href="https://www.facebook.com/cyrinejade05/" target="_blank">facebook.com/cyrinejade05</a></p>
+        <h4 class="mt">How it works</h4>
+        <ol>
+          <li>Fill the order form and click <em>Send Order</em>.</li>
+          <li>We will receive your message to the email provided and reply with payment & delivery details.</li>
+          <li>If you prefer instant chat, use the Messenger button.</li>
+        </ol>
+      </aside>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>VintyChic</strong>
+        <p class="muted">© <span id="year4"></span> Cyrine Jade Aliposa Colocado</p>
+      </div>
+      <div class="socials">
+        <a href="https://www.instagram.com/vintychicph" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/cyrinejade05/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Thank you popup -->
+  <div id="thankyou" class="modal">
+    <div class="modal-card">
+      <h3>Thank you for your order! 💖</h3>
+      <p>We received your request and will contact you soon.</p>
+      <button class="btn" id="thanksClose">Close</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year4').textContent = new Date().getFullYear();
+
+    // Formspree endpoint (from you)
+    const FORMSPREE = 'https://formspree.io/f/mzzjaagv';
+
+    const form = document.getElementById('orderForm');
+    const modal = document.getElementById('thankyou');
+    const closeBtn = document.getElementById('thanksClose');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      try{
+        const res = await fetch(FORMSPREE, {
+          method: 'POST',
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if(res.ok){
+          modal.classList.add('open');
+          form.reset();
+        } else {
+          const json = await res.json();
+          alert((json && json.error) ? json.error : 'Something went wrong. Please try again.');
+        }
+      } catch(err){
+        alert('Could not send message — check your connection and try again.');
+        console.error(err);
+      }
+    });
+
+    closeBtn.addEventListener('click', ()=> modal.classList.remove('open'));
+  </script>
+</body>
+</html>

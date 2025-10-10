@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VintyChic — Your Thrift, Your Trend</title>
+  <meta name="description" content="VintyChic — curated ukay-ukay fashion reworks and thrift finds by Cyrine Jade Aliposa Colocado. Affordable, classy, and eco-friendly fashion." />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/favicon.png" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+           <img src="./assets/logo.png" alt="Logo"/>
+           <span>VintyChic</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="shop.html" class="active">Shop</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Your thrift, your trend.</h1>
+          <p class="lead">Discover playful, classy thrifted pieces — handpicked and reworked for modern looks. Mixed pastels, lots of charm, and a whole lot of ♡</p>
+          <div class="hero-cta">
+            <a class="btn primary" href="shop.html">Shop Now</a>
+            <a class="btn outline" href="contact.html">Order / Message</a>
+          </div>
+        </div>
+        <div class="hero-art">
+          <img src="./assets/hero-model.png" alt="Model showcasing VintyChic fashion" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section class="features container">
+      <article class="feature-card">
+        <h3>Curated Ukay Finds</h3>
+        <p>Each piece is inspected, cleaned, and styled — giving you charming secondhand fashion with premium care.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Reworked & Unique</h3>
+        <p>Special reworks — cropped tops, embroidered accents, and subtle tailoring for one-of-a-kind looks.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Eco-Friendly Style</h3>
+        <p>Shopping thrift reduces waste — and still keeps you looking fresh and trendy.</p>
+      </article>
+    </section>
+
+    <section class="collection container">
+      <h2>Featured Pieces</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-img placeholder" aria-label="Vintage Floral Dress image"></div>
+          <h4>Vintage Floral Dress</h4>
+          <p class="price">₱350</p>
+          <div class="card-actions">
+            <a href="contact.html" class="btn small">Order</a>
+            <button class="btn ghost small" onclick="addToCart('Vintage Floral Dress')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img placeholder" aria-label="Retro Denim Jacket image"></div>
+          <h4>Retro Denim Jacket</h4>
+          <p class="price">₱450</p>
+          <div class="card-actions">
+            <a href="contact.html" class="btn small">Order</a>
+            <button class="btn ghost small" onclick="addToCart('Retro Denim Jacket')">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img placeholder" aria-label="Cropped Polo Top image"></div>
+          <h4>Cropped Polo Top</h4>
+          <p class="price">₱299</p>
+          <div class="card-actions">
+            <a href="contact.html" class="btn small">Order</a>
+            <button class="btn ghost small" onclick="addToCart('Cropped Polo Top')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>VintyChic</strong> — Your thrift, your trend.
+        <p class="muted">© <span id="year"></span> Cyrine Jade Aliposa Colocado</p>
+      </div>
+      <div class="socials">
+        <a href="https://www.instagram.com/vintychicph" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/cyrinejade05/" target="_blank" rel="noopener">Facebook</a>
+        <a href="mailto:cyrinejadeacolocado@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="cart-toast" class="toast">Added to cart</div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function addToCart(name){
+      const t = document.getElementById('cart-toast');
+      t.classList.add('show');
+      t.textContent = name + ' added to cart';
+      setTimeout(()=> t.classList.remove('show'), 1800);
+    }
+  </script>
+</body>
+</html>

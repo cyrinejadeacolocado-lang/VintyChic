@@ -1,0 +1,110 @@
+
+<!-- FILE: shop.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop — VintyChic</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">VintyChic</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <h1>Shop</h1>
+    <p class="lead">Browse curated pieces — click "Order" to go to the contact page and send an order request.</p>
+
+    <div class="grid">
+      <!-- Product Card repeated -->
+      <div class="card">
+        <div class="card-img placeholder"></div>
+        <h4>Vintage Floral Dress</h4>
+        <p class="price">₱350</p>
+        <div class="card-actions">
+          <a href="contact.html" class="btn">Order</a>
+          <button class="btn ghost" onclick="addToCart('Vintage Floral Dress')">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img placeholder"></div>
+        <h4>Retro Denim Jacket</h4>
+        <p class="price">₱450</p>
+        <div class="card-actions">
+          <a href="contact.html" class="btn">Order</a>
+          <button class="btn ghost" onclick="addToCart('Retro Denim Jacket')">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img placeholder"></div>
+        <h4>Cropped Polo Top</h4>
+        <p class="price">₱299</p>
+        <div class="card-actions">
+          <a href="contact.html" class="btn">Order</a>
+          <button class="btn ghost" onclick="addToCart('Cropped Polo Top')">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img placeholder"></div>
+        <h4>Knitted Sweater</h4>
+        <p class="price">₱380</p>
+        <div class="card-actions">
+          <a href="contact.html" class="btn">Order</a>
+          <button class="btn ghost" onclick="addToCart('Knitted Sweater')">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img placeholder"></div>
+        <h4>High-Waist Jeans</h4>
+        <p class="price">₱420</p>
+        <div class="card-actions">
+          <a href="contact.html" class="btn">Order</a>
+          <button class="btn ghost" onclick="addToCart('High-Waist Jeans')">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img placeholder"></div>
+        <h4>Classic White Blazer</h4>
+        <p class="price">₱520</p>
+        <div class="card-actions">
+          <a href="contact.html" class="btn">Order</a>
+          <button class="btn ghost" onclick="addToCart('Classic White Blazer')">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>VintyChic</strong>
+        <p class="muted">© <span id="year3"></span> Cyrine Jade Aliposa Colocado</p>
+      </div>
+      <div class="socials">
+        <a href="https://www.instagram.com/vintychicph" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/cyrinejade05/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="cart-toast" class="toast">Added to cart</div>
+  <script>document.getElementById('year3').textContent = new Date().getFullYear();
+    function addToCart(name){const t=document.getElementById('cart-toast');t.classList.add('show');t.textContent=name+' added to cart';setTimeout(()=>t.classList.remove('show'),1800);} </script>
+</body>
+</html>
